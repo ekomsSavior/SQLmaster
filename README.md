@@ -18,8 +18,10 @@ git clone https://github.com/ekomsSavior/SQLmaster.git
 cd SQLmaster
 
 # install dependencies
-pip3 install -r requirements.txt
+pip3 install requests rich pyyaml beautifulsoup4 lxml dnspython --break-system-packages
 ```
+(do a venv if you dont like --break-system-packages)
+
 
 ### Execution
 
