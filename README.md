@@ -3,7 +3,7 @@
 <div align="center">
 
 ![SQLMaster Banner](https://img.shields.io/badge/SQLMaster-Advanced%20SQLi%20Tool-red)
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+
 
 **The silent predator that sniffs out SQL vulnerabilities before they can scream**
 
