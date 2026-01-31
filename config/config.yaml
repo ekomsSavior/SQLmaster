@@ -1,0 +1,159 @@
+general:
+  timeout: 10
+  user_agent: "SQLMaster/1.0"
+  threads: 10
+  save_responses: false
+  
+crawler:
+  max_depth: 3
+  exclude_extensions:
+    - .jpg
+    - .png
+    - .gif
+    - .css
+    - .js
+    - .pdf
+  
+testing:
+  test_all_param_types: true
+  test_cookies: true
+  test_headers: true
+  test_json: true
+  test_xml: true
+  
+exploitation:
+  max_rows: 100
+  dbms_detection: true
+  os_detection: true
+  
+  # Out-of-band exploitation settings
+  oob:
+    # DNS exfiltration settings
+    dns:
+      enabled: true
+      port: 53
+      callback_domain: ""  # Set your domain for DNS callbacks (e.g., attacker.com)
+    
+    # HTTP exfiltration settings
+    http:
+      enabled: true
+      port: 8000
+      callback_url: ""  # Set your callback URL (e.g., http://attacker.com:8000)
+    
+    # General OOB settings
+    timeout: 10
+    enable_local_server: true
+    external_dns_server: "8.8.8.8"  # For testing DNS resolution
+    
+    # Advanced OOB settings
+    test_all_dbms: true
+    max_payloads_per_type: 5
+    wait_for_callback: true
+    callback_check_interval: 2  # Seconds between callback checks
+  
+  # Union-based exploitation settings
+  union:
+    max_columns: 10
+    test_null_columns: true
+    detect_data_types: true
+  
+  # Blind exploitation settings
+  blind:
+    boolean_threshold: 0.8
+    time_delay: 5
+    time_threshold: 1.5
+  
+  # Error-based exploitation settings
+  error:
+    extract_from_errors: true
+    parse_error_messages: true
+  
+  # Stacked queries settings
+  stacked:
+    test_transactions: true
+    test_multiple_statements: true
+  
+  # Data extraction settings
+  extraction:
+    batch_size: 50
+    delay_between_batches: 1  # Seconds
+    chunk_data: true
+    max_chunk_size: 1000
+  
+reporting:
+  format: txt
+  include_proof: true
+  save_raw_responses: false
+  save_payloads: true
+  
+  severity_levels:
+    critical: ["RCE", "Data Extraction", "Authentication Bypass", "Admin Access"]
+    high: ["Union-Based", "Error-Based", "Stacked Queries", "Out-of-band"]
+    medium: ["Boolean-Based Blind", "Time-Based Blind"]
+    low: ["Error-Based Info Leak", "DBMS Detection"]
+  
+  # Report sections
+  sections:
+    - summary
+    - vulnerabilities
+    - exploitation_results
+    - recommendations
+    - technical_details
+  
+  # Output formats
+  outputs:
+    - console
+    - file
+    - json  # Optional: for integration with other tools
+  
+  # File naming
+  filename_template: "sqli_scan_{date}_{target}"
+  date_format: "%Y%m%d_%H%M%S"
+  
+# Advanced settings
+advanced:
+  # Performance tuning
+  request_delay: 0  # Seconds between requests (0 for maximum speed)
+  retry_failed: true
+  max_retries: 3
+  retry_delay: 2
+  
+  # Security/stealth options
+  randomize_user_agent: false
+  use_proxies: false
+  proxy_list: []  # Add proxies here if needed: ["http://proxy1:port", "http://proxy2:port"]
+  rotate_proxies: false
+  follow_redirects: true
+  max_redirects: 5
+  
+  # SSL/TLS settings
+  verify_ssl: false  # Set to true for production, false for testing
+  ssl_timeout: 10
+  
+  # Logging
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_file: "sqli_master.log"
+  log_format: "%(asctime)s - %(levelname)s - %(message)s"
+  
+  # Database-specific optimizations
+  mysql:
+    test_functions: true
+    test_system_tables: true
+    
+  postgresql:
+    test_functions: true
+    test_system_catalogs: true
+    
+  mssql:
+    test_xp_cmdshell: true
+    test_system_tables: true
+    
+  oracle:
+    test_packages: true
+    test_system_views: true
+
+# Plugin system (future expansion)
+plugins:
+  enabled: false
+  plugin_dir: "plugins/"
+  load_plugins: []
