@@ -92,7 +92,7 @@ class SQLMaster:
         ╔══════════════════════════════════════════════════════════╗
         ║                  SQLMaster v1.0                          ║
         ║    Advanced SQL Injection Scanner & Exploitation Tool    ║
-        ║         For Authorized Security Testing Only             ║
+        ║                 by ek0ms savi0r                          ║
         ╚══════════════════════════════════════════════════════════╝
         """
         console.print(Panel.fit(banner, style="bold cyan"))
